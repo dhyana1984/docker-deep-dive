@@ -1,0 +1,4 @@
+# in linux, user can confgi the driver in /etc/docker/daemon.json
+{
+    "storage-driver" : "overlay2"
+}
