@@ -2,11 +2,11 @@
 **"docker-compose up" is the comand that run yml file. The default file name is "docker-compose.yml". If use other file name, should use -f as parameter**
 **use -d to launch application in backend**
 **"docker-compose up &" & means return to console, but log will output in console as well**
-···bash
+`bash
 $ docker-compose up &
 $ docker-compose -f another-docker-compose.yml
 $ docker-compose up -d
-···
+`
 
 
 **stop docker compose, service will be closed and network will be removed. But volumes will not be remove because the data is persistent in volumes**
