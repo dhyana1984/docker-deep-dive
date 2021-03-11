@@ -1,0 +1,24 @@
+version: "3.5" # First level key. Always the first line, define the Compose file format(API)
+services: # Define the services
+  web-fe: # Second level key. Docker will deploy web-fe as a web application in a container
+    build: . # Build a new image based on dockerfile in current folder
+    command: python app.py # Ask Docker to execute app.py as main application. app.py and Python must be included in image.
+    ports: # Mapping the container port(target) to host port(published)
+      - target: 5000 
+        published: 5000
+    networks: # Let docker connect service to the network that existed already or defined in first level key
+      - counter-net
+    volumes: # mount the volume to container(target) the volumes shoulr be existed already or defined in first level
+      - type: volume
+        source: counter-vol
+        target: /code
+  redis: # Second level key. Docker will deploy redis as a application in a container
+    image: "redis:alpine"
+    networks:
+      counter-net:
+
+networks:
+  counter-net: # Define the network that docker created. Default is the bridge which only support containers connecting in the same host
+
+volumes: # Define Docker create new volumes
+  counter-vol:
